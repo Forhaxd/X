@@ -1,0 +1,158 @@
+/* HAPPY BIRTHDAY TAKIA — responsive stylesheet */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#feecea;--white:#fff;--black:#333;--accent:#ff7882;--letter:#fff8e4}
+html,body{width:100%;min-height:100%;font-family:"Sriracha",cursive}
+body{background:var(--pink);overflow-x:hidden}
+button{font:inherit}
+#wrapper{position:relative;min-height:100vh;overflow:hidden;background-color:var(--pink);background-image:linear-gradient(0deg,transparent 24%,rgba(255,255,255,.9) 25%,rgba(255,255,255,.9) 26%,transparent 27%,transparent 74%,rgba(255,255,255,.9) 75%,rgba(255,255,255,.9) 76%,transparent 77%),linear-gradient(90deg,transparent 24%,rgba(255,255,255,.9) 25%,rgba(255,255,255,.9) 26%,transparent 27%,transparent 74%,rgba(255,255,255,.9) 75%,rgba(255,255,255,.9) 76%,transparent 77%);background-size:80px 80px}
+img{display:block;max-width:100%}
+
+/* Flags */
+.flag__birthday{display:flex;justify-content:space-between;transform:translateY(-200px);animation:flagDown 1.5s 2s forwards}
+.flag__birthday img{width:min(350px,35vw)}
+.flag__left{transform:rotate(-10deg) translate(-20px,30px)}
+.flag__right{transform:rotate(10deg) translate(20px,30px) scaleX(-1)}
+@keyframes flagDown{to{transform:translateY(-10px)}}
+
+/* Main layout */
+.content{position:relative;width:100%;display:flex;align-items:center;padding:3rem 2rem 1rem}
+.content .left,.content .right{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.content .left{width:40%}.content .right{width:60%}
+.title{position:relative;width:100%;display:flex;align-items:center;flex-direction:column;font-family:"Titan One",sans-serif;font-size:clamp(2rem,4vw,3rem);perspective:1000px}
+.title h1{display:flex;justify-content:center;font-weight:bold;text-shadow:4px 4px var(--black),-4px 4px var(--black),4px -4px var(--black),-4px -4px var(--black),4px 8px 0 var(--black)}
+.happy{color:var(--white)}.birthday{color:var(--accent)}
+.title span{transform:translateY(50px);opacity:0;visibility:hidden;animation:letterIn .5s var(--t) forwards}
+@keyframes letterIn{to{transform:translateY(0);opacity:1;visibility:visible}}
+.hat{position:absolute;right:5%;top:-350px;z-index:-1;transform:rotate(-40deg);animation:hatDrop 4s 7s forwards}
+.hat img{width:130px}
+@keyframes hatDrop{20%,30%{top:-30px;transform:rotate(-40deg)}35%,100%{top:-30px;transform:rotate(0)}}
+
+/* Date and button */
+.date__of__birth{display:flex;align-items:center;justify-content:space-around;gap:12px;width:0;height:0;overflow:hidden;margin-top:20px;border:3px solid var(--black);border-radius:50px;background:var(--accent);opacity:0;visibility:hidden;white-space:nowrap;animation:dateReveal 5s 9s forwards}
+.date__of__birth span{font-size:1.2rem;font-weight:bold}
+.date__of__birth i{font-size:.85rem}
+@keyframes dateReveal{20%,40%{width:0;height:0;opacity:1;visibility:visible}45%{width:300px;height:0;opacity:1;visibility:visible}50%,100%{width:300px;height:50px;opacity:1;visibility:visible}}
+.left .btn{transform:scale(0);animation:pop 2s 16s forwards}
+#btn__letter{display:flex;align-items:center;justify-content:center;gap:8px;position:relative;z-index:2;margin-top:30px;padding:8px 18px;border:3px solid var(--black);border-radius:50px;background:var(--accent);color:var(--black);font-size:1rem;cursor:pointer;transition:.3s}
+#btn__letter:hover{background:var(--accent);color:white;border-color:var(--accent);box-shadow:0 3px 8px #0003}
+#btn__letter:hover i{animation:wiggle 1s infinite}
+#btn__letter:active{transform:scale(.92)}
+@keyframes wiggle{25%{transform:rotate(12deg)}75%{transform:rotate(-12deg)}}
+
+/* Portrait */
+.box__account{position:relative;transform:translateY(700px);animation:portraitUp 8s 7s forwards ease-in}
+@keyframes portraitUp{to{transform:translateY(0)}}
+.image{width:clamp(220px,31vw,400px);aspect-ratio:1;border:6px solid var(--black);border-radius:50%;overflow:hidden;background:white}
+.image img{width:100%;height:100%;object-fit:cover}
+.name{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:12px;padding:2px 18px;border:3px solid var(--black);border-radius:50px;background:var(--accent);white-space:nowrap;font-family:"Dancing Script",cursive;z-index:2}
+.name span{font-size:1.7rem;font-weight:bold}.name i{color:#fff}
+
+/* Balloons */
+.balloon_one{position:absolute;top:-70px;left:-70px;animation:swayOne 2s infinite linear}
+.balloon_two{position:absolute;top:170px;right:-65px;z-index:-1;animation:swayTwo 2s infinite linear}
+.balloon_one img,.balloon_two img{width:100px}
+@keyframes swayOne{25%{transform:rotate(3deg)}75%{transform:rotate(-3deg)}}
+@keyframes swayTwo{0%,50%,100%{transform:rotate(10deg)}25%{transform:rotate(7deg)}75%{transform:rotate(13deg)}}
+
+/* Circular birthday text */
+.cricle{position:absolute;top:20px;right:50px;display:flex;align-items:center;justify-content:center;transform:scale(0);animation:pop 3s 15s forwards}
+.text__cricle{position:relative;width:100px;height:100px;border:5px solid var(--black);border-radius:50%;background:var(--accent);animation:spin 5s linear infinite}
+.text__cricle span{position:absolute;top:0;left:50%;color:var(--black);font-size:.7rem;text-transform:uppercase;transform:rotate(calc(var(--i)*24deg));transform-origin:0 45px}
+.cricle>.fa-heart{position:absolute;color:var(--accent);filter:drop-shadow(0 0 3px var(--accent));animation:heartbeat 1s infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes heartbeat{50%{transform:scale(1.2)}}
+@keyframes pop{0%{transform:scale(0)}10%{transform:scale(1.3)}20%{transform:scale(.7)}30%,100%{transform:scale(1)}}
+
+/* Decorations */
+.decorate_star{position:absolute;transform:scale(0);background:var(--black);clip-path:polygon(0 50%,35% 35%,50% 0,65% 35%,100% 50%,65% 65%,50% 100%,35% 65%);animation:pop 3s var(--t) forwards,twinkle 2s 16s infinite ease-in-out}
+.star1{width:20px;height:20px;top:75px;left:300px}.star2{width:15px;height:20px;top:35px;right:360px}.star3{width:14px;height:14px;top:290px;left:630px}.star4{width:18px;height:18px;bottom:60px;left:35px}.star5{width:16px;height:18px;bottom:140px;left:500px}
+@keyframes twinkle{50%{transform:scale(1.1)}}
+.decorate_bottom{position:absolute;right:0;bottom:-10px}.decorate_bottom img{width:100px}
+.decorate_flower--one,.decorate_flower--two,.decorate_flower--three{position:absolute;transform:scale(0);animation:pop 3s var(--t) forwards}
+.decorate_flower--one{top:250px;left:50px}.decorate_flower--two{top:225px;left:540px}.decorate_flower--three{top:150px;right:235px}
+.decorate_flower--one img,.decorate_flower--two img,.decorate_flower--three img{width:20px}
+.smiley__icon{position:absolute;bottom:180px;left:600px;transform:scale(0);animation:pop 3s 15s forwards}
+.smiley__icon img{width:100px}
+
+/* Full-screen birthday envelope */
+.boxMail{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.84);opacity:0;visibility:hidden;transform:scale(.96);transition:opacity .35s,transform .35s,visibility .35s}
+.boxMail.active{opacity:1;visibility:visible;transform:scale(1)}
+.mail-close{position:absolute;top:12px;right:16px;z-index:10;border:0;background:transparent;color:white;font-size:30px;cursor:pointer}
+.mail-close:hover{color:var(--accent);transform:rotate(90deg)}
+.boxMail-container{position:relative;display:flex;width:min(750px,92vw);height:min(500px,78vh);min-height:320px;perspective:1800px;cursor:pointer;filter:drop-shadow(0 8px 18px #0004)}
+.card1,.card2{position:absolute;top:0;width:50%;height:100%;border:1px solid #333}
+.card1{left:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;background:linear-gradient(110deg,#ff7882,#ff8991);color:white;text-align:center;transform-origin:left center;transform-style:preserve-3d;transition:transform 1s ease-in-out}
+.card1 .userImg{width:88px;height:88px;overflow:hidden;border:3px solid white;border-radius:50%;background:white}
+.card1 .userImg img{width:100%;height:100%;object-fit:cover}
+.card1 h4{font-family:"Dancing Script",cursive;font-size:22px}
+.card1 h3{font-family:"Dancing Script",cursive;font-size:clamp(23px,4vw,40px);text-transform:uppercase;text-shadow:0 0 8px white;transform:rotate(-4deg)}
+.card1 .imageCute img{width:75px}
+.tap-hint{font-size:12px;opacity:.9}
+.card2{right:0;background:#fff}
+.card2-content{width:100%;height:100%;overflow-y:auto;padding:24px 20px;background:linear-gradient(145deg,#ff7882,#f66b7a);color:white}
+.card2 h3{margin-bottom:14px;text-align:center;font-family:"Dancing Script",cursive;font-size:clamp(23px,3vw,30px)}
+.card2 p{font-family:"Sriracha",cursive;font-size:clamp(12px,1.6vw,16px);line-height:1.9;overflow-wrap:anywhere}
+.imageCute2{display:flex;justify-content:center;margin-top:16px}
+.imageCute2 img{width:65px}
+.boxMail-container.opened .card1{transform:rotateY(-160deg)}
+.boxMail-container.opened .tap-hint{opacity:0}
+
+/* Tablet */
+@media(max-width:900px){
+ .content{padding:2rem 1rem}
+ .title{font-size:2.3rem}
+ .cricle{right:5px}
+ .star2{right:150px}.star3{left:50%}
+ .decorate_flower--two{left:45%}.smiley__icon{left:50%}
+}
+
+/* Mobile */
+@media(max-width:658px){
+ body{overflow-y:auto}
+ #wrapper{min-height:100svh;padding-bottom:35px}
+ .flag__birthday img{width:43vw}
+ .flag__left{transform:rotate(-10deg) translate(-65px,8px)}
+ .flag__right{transform:rotate(10deg) translate(65px,18px) scaleX(-1)}
+ .content{flex-direction:column;gap:28px;padding:1.8rem 12px 25px}
+ .content .left,.content .right{width:100%}
+ .title{font-size:clamp(1.5rem,7vw,2rem);letter-spacing:4px}
+ .hat{right:-45px;top:-45px!important}.hat img{width:82px}
+ .date__of__birth{margin-top:14px}
+ .date__of__birth span{font-size:1rem}
+ @keyframes dateReveal{20%,40%{width:0;height:0;opacity:1;visibility:visible}45%{width:250px;height:0;opacity:1;visibility:visible}50%,100%{width:250px;height:44px;opacity:1;visibility:visible}}
+ #btn__letter{width:210px;margin-top:16px;padding:7px}
+ .box__account{margin-top:5px}
+ .image{width:220px}
+ .name{bottom:-12px;padding:2px 10px;gap:8px}
+ .name span{font-size:1.2rem}
+ .balloon_one{top:0;left:-52px}.balloon_two{top:100px;right:-45px}
+ .balloon_one img,.balloon_two img{width:72px}
+ .cricle{top:-12px;right:5px}
+ .text__cricle{width:76px;height:76px;border-width:4px}
+ .text__cricle span{font-size:.55rem;transform:rotate(calc(var(--i)*24deg));transform-origin:0 34px}
+ .star1{left:18px;top:100px}.star2{right:24px;top:50px}.star3{left:auto;right:28px;top:420px}.star4{left:18px;bottom:50px}.star5{left:auto;right:25px;bottom:150px}
+ .decorate_flower--one{top:220px;left:15px}.decorate_flower--two{top:450px;left:20px}.decorate_flower--three{top:150px;right:15px}
+ .smiley__icon{left:auto;right:15px;bottom:90px}.smiley__icon img{width:70px}
+ .decorate_bottom img{width:75px}
+ .boxMail{padding:12px}
+ .boxMail-container{width:94vw;height:min(440px,72vh);min-height:330px}
+ .card1{gap:10px;padding:10px}
+ .card1 .userImg{width:62px;height:62px}
+ .card1 h4{font-size:15px}
+ .card1 h3{font-size:clamp(17px,5vw,23px);letter-spacing:1px}
+ .card1 .imageCute img{width:52px}
+ .card2-content{padding:13px 10px}
+ .card2 h3{font-size:19px;margin-bottom:8px}
+ .card2 p{font-size:clamp(10px,2.8vw,12px);line-height:1.75}
+ .imageCute2 img{width:45px}
+}
+@media(max-width:380px){
+ .title{letter-spacing:2px}
+ .image{width:190px}
+ .boxMail-container{min-height:310px}
+ .card1 h3{font-size:17px}
+ .card2 p{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
